@@ -18,7 +18,7 @@ Eloquent
 
 Laravel will not work on your computer if you just download the repo. You must have PHP and MySql installed. If you know what you're doing and have Homestead/Vagrant installed then knock yourself out (we were too lazy to intall Homestead/Vagrant). If you didn't understand a word of this then follow the steps below carefully.
 
-###PC (Windows - 10)
+### PC (Windows - 10)
 
 1. Install XAMPP from [HERE](https://www.apachefriends.org/index.html). Only PHP and MySQL are required, but feel free to install anything which tickles your fancy.
 
