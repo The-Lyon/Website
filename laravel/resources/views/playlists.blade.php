@@ -31,7 +31,7 @@ $post= \App\Http\Controllers\PostController::index();
                     <div class="post-tab playlist">
                         <h2>{{$post->title}}</h2>
                         <a href="{{'/authors/'.\App\Http\Controllers\AuthorController::nameFind($post->author)}}">
-                            <p>{{$post->author}}</p>
+                            <p style="margin-top:10px;">{{$post->author}}</p>
                         </a>
                         <div class="intro-container">
                                 <?php echo($post->intro);?>
@@ -46,7 +46,7 @@ $post= \App\Http\Controllers\PostController::index();
                     <div class="post-tab playlist">
                         <h2>{{$post->title}}</h2>
                         <a href="{{'/authors/'.\App\Http\Controllers\AuthorController::nameFind($post->author)}}">
-                            <p>{{$post->author}}</p>
+                           <p style="margin-top:10px;">{{$post->author}}</p>
                         </a>
                         <div class="intro-container">
                                 <?php echo($post->intro);?>

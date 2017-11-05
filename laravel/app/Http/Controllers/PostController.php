@@ -76,6 +76,8 @@ class PostController extends Controller
             $post->sport = "article";
         }elseif($request->type =="News"){
             $post->sport = "false";
+        }else{
+            $post->sport = "playlist";
         }
         
                //Save

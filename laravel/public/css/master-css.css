@@ -600,6 +600,10 @@ All Posts Page (News)
 
 }
 
+.playlist p{
+    margin-top:0px;
+}
+
 .playlist h2{
        padding-top:20px;
 }
