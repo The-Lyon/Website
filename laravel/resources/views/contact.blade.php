@@ -26,15 +26,24 @@
         <div class="col-sm-12 col-md-6">
             <h2 id="page-title" style="margin-bottom:20px;padding:10px;">Contact The Lyon</h2>
         </div>
-        <div style="text-align:center;" class="col-sm-12">
-            <div class="fb-page" data-href="https://www.facebook.com/torontohackerclub/" data-tabs="messages" data-width="1000" data-height="300" data-small-header="true">
-                <div class="fb-xfbml-parse-ignore">
-                    <blockquote></blockquote>
-                </div>
+        <div class="col-sm-12">
+                <?php
+            if(isset($sent)){
+                echo('<div class="alert alert-success" role="alert"><span><strong>Message Sent!</strong></span></div>');
+            }
+            ?>
+            {{Form::open([ 'method' => 'POST', 'route' => 'posts.store' ])}}
+            <div class="contact">
+                <p>Send us an email:</p>
+                <hr class="nomargin" />
+                <input name="name" class="form-control" placeholder="Name" type="text">
+                <input name="email" class="form-control" placeholder="Email" type="email">
+                <textarea name="message" class="form-control" placeholder="Message"></textarea>
+                <input type="submit" class="btn" value="Send">
             </div>
+            {{Form::close()}}
             <br/>
             <br/>
-            <p>Or send us an email at: <a href="mailto:mailtelenko@gmail.com">email</a></p>
         </div>
     </div>
 </div>

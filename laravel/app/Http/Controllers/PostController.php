@@ -28,7 +28,6 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -40,7 +39,12 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //Validate
-        
+        if(isset($request->email)){
+            $headers = 'From: webmaster@example.com' . "\r\n" .
+       'Reply-To: webmaster@example.com';
+                            mail("mailtelenko@gmail.com","LO Contact - ".$request->name,$request->message." - ".$request->email, $headers);
+            return view("contact")->withSent("true");
+        }else{
         if($request->type != "Playlist") {
             $this->validate($request,array(
                 'title'=> 'required|max:255',
@@ -92,6 +96,7 @@ class PostController extends Controller
         } 
         
         return redirect()->route('posts.show', $post->id);
+        }
     }
 
     /**

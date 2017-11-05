@@ -47,4 +47,8 @@ class PagesController extends Controller{
         return view("/errors/error404")->withTitle("Error!");
     }
     
+    public function getRegister(){
+        return view("/auth/newRegister")->withTitle("Register");
+    }
+    
 }

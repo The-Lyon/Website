@@ -35,6 +35,8 @@ Route::get("/contact", "PagesController@getContact");
 
 Route::get("/error404", "PagesController@error404");
 
+Route::get("/home", ['uses' => 'PagesController@getAdmin', 'middleware' => 'auth']);
+
 Route::resource('posts','PostController');
 
 Route::resource('authors','AuthorController');

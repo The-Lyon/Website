@@ -806,3 +806,14 @@ Admin Page
     height:inherit;
     width:auto;
 }
+
+/* 
+Contact Page 
+*/
+
+.contact{
+    width:80%;
+}
+.contact *{
+    margin:10px;
+}

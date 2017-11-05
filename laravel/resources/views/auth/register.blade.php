@@ -1,5 +1,5 @@
 @extends('layouts.app') @section('content')
-<div class="container-fluid post">
+<div class="container-fluid post post-full">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
@@ -47,6 +47,14 @@
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="code" class="col-md-4 control-label">Secret Code</label>
+
+                            <div class="col-md-6">
+                                <input id="code" type="password" class="form-control" name="code" required>
                             </div>
                         </div>
 
