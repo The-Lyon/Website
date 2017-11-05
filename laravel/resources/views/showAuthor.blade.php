@@ -30,7 +30,9 @@
                     <p>{{$post->author}}</p>
                 </a>
                 <div class="intro-container">
-                    <p id="intro">{{$post->intro}}</p>
+                    <div id="intro">
+                    <?php echo($post->intro)?>
+                    </div>
                 </div>
                 <a href="{{'/posts/'.$post->id}}">
                         <button class="btn">Read Article</button>

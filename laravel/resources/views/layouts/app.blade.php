@@ -132,7 +132,7 @@ if(!isset($title)){
                             </form>
                         </li>
                         <li>
-                            <a href="/home">
+                            <a href="/admin">
                             Admin Panel
                             </a>
                         </li>

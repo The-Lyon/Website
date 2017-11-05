@@ -7,16 +7,8 @@ class PagesController extends Controller{
         return view('welcome')->withTitle('Home');
     }
     
-    public function getCreatePost(){
-        return view('create-post')->withTitle('New Post');
-    }
-    
     public function getNews(){
         return view('news')->withTitle("News");
-    }
-    
-    public function getCreateUser(){
-        return view('create-user')->withTitle('New Executive');
     }
     
     public function getAbout(){
@@ -39,12 +31,20 @@ class PagesController extends Controller{
         return view("/lumino/posts");
     }
     
+    public function getAdminUser(){
+        return view("/lumino/users");
+    }
+    
     public function getArticles(){
         return view("/articles")->withTitle("Articles");
     }
     
     public function getContact(){
         return view("/contact")->withTitle("Contact");
+    }
+    
+    public function error404(){
+        return view("/errors/error404")->withTitle("Error!");
     }
     
 }

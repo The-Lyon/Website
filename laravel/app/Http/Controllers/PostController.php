@@ -18,7 +18,7 @@ class PostController extends Controller
     public static function index()
     {
         $posts = Post::all();
-        return $posts;
+        return $posts->reverse();
     }
 
     /**l
@@ -41,7 +41,7 @@ class PostController extends Controller
     {
         //Validate
         
-        if(null===($request->playlist)) {
+        if($request->type != "Playlist") {
             $this->validate($request,array(
                 'title'=> 'required|max:255',
                 'body'=>'required',
@@ -66,19 +66,21 @@ class PostController extends Controller
         $post->author = $request->author;
         $post->intro = $request->intro;
         
-        if(isset($request->sport)){
+        if($request->type == "Sport"){
             $post->sport = "true";
-        }elseif(isset($request->article)){
+        }elseif($request->type == "Article"){
             $post->sport = "article";
-        }else{
+        }elseif($request->type =="News"){
             $post->sport = "false";
         }
         
+               //Save
+        $post->save();
+        
         //If not playlist post
-        if(!isset($request->playlist)){            
+        if($request->type != "Playlist"){            
             //Create Directory for res Img
             $id = \DB::table('posts')->max('id');
-            $id = $id +1;
             mkdir("img/posts/".$id,0777,true);
         
             //Move head image to directory
@@ -88,9 +90,6 @@ class PostController extends Controller
         }else{
             $post->sport="playlist";
         } 
-        
-        //Save
-        $post->save();
         
         return redirect()->route('posts.show', $post->id);
     }
@@ -128,7 +127,8 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+        return view("lumino/postEdit")->withPost($post);
     }
 
     /**
@@ -140,7 +140,38 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,array(
+                'title'=> 'required|max:255',
+                'body'=>'required',
+                'intro'=>'required|max:225',
+                'author'=>'required'
+            ));
+        
+        $post = Post::find($id);
+        
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->intro = $request->intro;
+        $post->author = $request->author;
+        
+        if($request->type == "Sport"){
+            $post->sport = "true";
+        }elseif($request->type == "Article"){
+            $post->sport = "article";
+        }elseif($request->type =="News"){
+            $post->sport = "false";
+        }
+        
+        $post->save();
+        
+        if (isset($post->headImg)){
+            //Move head image to directory
+            $head = $request->file('headImg');
+            $fileType = $head->getClientOriginalExtension();
+            $head->move("img/posts/".$id, "head".".".$fileType);   
+        }
+
+        return view("lumino/posts");
     }
 
     /**
@@ -151,6 +182,18 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+        $post->delete();
+        $directory = 'img/posts/'.$id;
+        foreach(glob("{$directory}/*") as $file)
+    {
+        if(is_dir($file)) { 
+            recursiveRemoveDirectory($file);
+        } else {
+            unlink($file);
+        }
+    }
+        rmdir($directory);
+        return view('lumino/posts');
     }
 }

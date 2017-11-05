@@ -17,10 +17,6 @@ Route::get("/news", 'PagesController@getNews');
 
 Route::get('/about', 'PagesController@getAbout');
 
-Route::get('/new/post', ['uses' => 'PagesController@getCreatePost', 'middleware' => 'auth']);
-
-Route::get('/new/user', ['uses' => 'PagesController@getCreateUser', 'middleware' => 'auth']);
-
 Route::get("/sports", "PagesController@getSports");
 
 Route::get("/playlists","PagesController@getPlaylists");
@@ -29,11 +25,15 @@ Route::get("/admin", ['uses' => 'PagesController@getAdmin', 'middleware' => 'aut
 
 Route::get("/admin/post", ['uses' => 'PagesController@getAdminPost', 'middleware' => 'auth']);
 
+Route::get("/admin/users", ['uses' => 'PagesController@getAdminUser', 'middleware' => 'auth']);
+
 Route::get("/social", "PagesController@getSocial");
 
 Route::get("/articles", "PagesController@getArticles");
 
 Route::get("/contact", "PagesController@getContact");
+
+Route::get("/error404", "PagesController@error404");
 
 Route::resource('posts','PostController');
 
@@ -58,5 +58,3 @@ Route::any('/search',function(){
         return view($returnView)->withSearch($searchPost)->withQuery($search);
     else return view ($returnView)->withMessage('No posts found')->withQuery($search);
 });
-
-Route::get('/home', 'HomeController@index');

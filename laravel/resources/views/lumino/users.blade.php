@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-$post= \App\Http\Controllers\PostController::index();
+$post= \App\Http\Controllers\AuthorController::index();
 $items= \App\Http\Controllers\AuthorController::showAll();
 ?>
     <html>
@@ -57,8 +57,8 @@ $items= \App\Http\Controllers\AuthorController::showAll();
             <div class="divider"></div>
             <ul class="nav menu">
                 <li><a href="/admin"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
-                <li class="active"><a href="/admin/post"><em class="fa fa-edit">&nbsp;</em> Posts</a></li>
-                <li><a href="/admin/users"><em class="fa fa-address-card-o">&nbsp;</em> Users</a></li>
+                <li><a href="/admin/post"><em class="fa fa-edit">&nbsp;</em> Posts</a></li>
+                <li class="active"><a href="/admin/users"><em class="fa fa-address-card-o">&nbsp;</em> Users</a></li>
                 <li><a href="/">Back to The Lyon</a></li>
             </ul>
         </div>
@@ -70,14 +70,14 @@ $items= \App\Http\Controllers\AuthorController::showAll();
                     <li><a href="#">
 					<em class="fa fa-home"></em>
 				</a></li>
-                    <li class="active">Posts</li>
+                    <li class="active">Users</li>
                 </ol>
             </div>
             <!--/.row-->
 
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Posts</h1>
+                    <h1 class="page-header">Users</h1>
                 </div>
             </div>
             <!--/.row-->
@@ -86,43 +86,39 @@ $items= \App\Http\Controllers\AuthorController::showAll();
                 <div class="col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            All Posts
+                            All Users
                             <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
                         <div class="panel-body">
                             <div class="container-fluid">
                                 <div class="post-row row">
                                     <div class="col-sm-3">
-                                        <p><strong><u>Title</u></strong></p>
+                                        <p><strong><u>Name</u></strong></p>
                                     </div>
                                     <div class="col-sm-3">
-                                        <p><strong><u>Author</u></strong></p>
+                                        <p><strong><u>Position</u></strong></p>
                                     </div>
                                     <div class="col-sm-3">
-                                        <p><strong><u>Type</u></strong></p>
+                                        <p><strong><u>Year</u></strong></p>
                                     </div>
                                 </div>
                                 <hr class="nomargin" />
                                 <br/> @foreach($post as $post)
                                 <div class="post-row row">
                                     <div class="col-sm-3">
-                                        <p><strong>{{$post->title}}</strong></p>
+                                        <p><strong>{{$post->author}}</strong></p>
                                     </div>
                                     <div class="col-sm-3">
-                                        <p>{{$post->author}}</p>
+                                        <p>{{$post->position}}</p>
                                     </div>
                                     <div class="col-sm-3">
                                         <p id="intro">
-                                            <?php if($post->sport == 'false'){ echo("News");
-                                        }elseif($post->sport == 'true'){
-                                            echo("Sport");
-                                        }elseif($post->sport == 'playlist'){
-                                        echo("Playlist");}elseif($post->sport == "article"){echo("Article");}else{echo("undefined");} ?>
+                                            {{$post->year}}
                                         </p>
                                     </div>
                                     <div style="text-align:right" class="col-sm-3">
-                                         {{Form::open([ 'method' => 'delete', 'route' => [ 'posts.destroy', $post->id ] ])}}
+                                        {{Form::open([ 'method' => 'delete', 'route' => [ 'authors.destroy', $post->id ] ])}}
                                         <button id="delete" class="post-item btn btn-primary btn-sm"><span class="fa fa-trash-o"></span></button> {{ Form::close() }}
-                                       {{Form::open([ 'method' => 'GET', 'route' => [ 'posts.edit', $post->id ] ])}}<button id="edit" class="post-item btn btn-primary btn-sm"><span class="	fa fa-edit"></span></button></form>
+                                        {{Form::open([ 'method' => 'GET', 'route' => [ 'authors.edit', $post->id ] ])}}<button id="edit" class="post-item btn btn-primary btn-sm"><span class="	fa fa-edit"></span></button></form>
                                     {{ Form::close() }}
                                     </div>
                                 </div>
@@ -139,35 +135,22 @@ $items= \App\Http\Controllers\AuthorController::showAll();
                 <div class="col-md-12">
                     <div class="panel panel-default collapsed">
                         <div class="panel-heading">
-                            New Post
+                            New User
                             <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-down"></em></span></div>
                         <div class="panel-body" style="display:none;">
-                            {!! Form::open(array('route'=>'posts.store', 'files' => true))!!} {{Form::label('title','Title:')}} {{Form::text('title',null,array('class'=>'form-control'))}}
-                            <br/> {!! Form::Label('item', 'Author:') !!}
-                            <select class="form-control" name="author">
-                    @foreach($items as $item)
-                        <option value="{{$item}}">{{$item}}</option>
-                    @endforeach
-                    </select> <br/>{{Form::label('intro','Intro:')}}
-                            <br/> {{Form::textarea('intro',null,array('class'=>'form-control'))}}
-                            <br/> {{Form::label('body','Post Body:')}} {{Form::textarea('body',null,array('class'=>'form-control'))}}
-                            <br/> {{Form::label('headImg',"Header Image")}} {{Form::file('headImg',array('class'=>'form-control img-upload'))}}
-                            <br/>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    {{Form::label('type', "News")}}{{ Form::radio('type', 'News',array('class'=>'form-control')) }}
-                                </div>
-                                <div class="col-sm-3">
-                                    {{Form::label('type', "Sport ")}}{{ Form::radio('type', 'Sport',array('class'=>'form-control')) }}
-                                </div>
-                                <div class="col-sm-3">
-                                    {{Form::label('type', "Article ")}}{{ Form::radio('type', 'Article',array('class'=>'form-control')) }}
-                                </div>
-                                <div class="col-sm-3">
-                                    {{Form::label('type', "Playlist ")}}{{ Form::radio('type', 'Playlist',array('class'=>'form-control')) }}
-                                </div>
-                            </div>
-                            <br/> {{Form::submit('Create Post', array('class'=>'btn btn-primary'))}} {!! Form::close() !!}
+                            {!! Form::open(array('route'=>'authors.store', 'files' => true))!!} {{Form::label('author','Name (Full):')}} {{Form::text('author',null,array('class'=>'form-control'))}}
+                            <br/> {{Form::label('year','Year:')}}
+                            <select class="form-control" name="year">
+                        <?php 
+                        for ($x=date("Y")-1;$x<=date("Y")+1;$x++){
+                            echo('<option value="'.($x).'/'.($x+1).'">'.($x).'/'.($x+1).'</option>');
+                        }
+                        ?>
+                    </select>
+                            <br/> {{Form::label('position','Position:')}} {{Form::text('position',null,array('class'=>'form-control'))}}
+                            <br/> {{Form::label('bio','Bio (Max 400 characters):')}} {{Form::textarea('bio',null,array('class'=>'form-control'))}}
+                            <br/> {{Form::file('profilePic',array('class'=>'form-control img-upload'))}}
+                            <br/> {{Form::submit('Create User', array('class'=>'btn btn-primary'))}} {!! Form::close() !!}
                         </div>
                     </div>
                 </div>
@@ -177,7 +160,7 @@ $items= \App\Http\Controllers\AuthorController::showAll();
                 <div class="col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            New Post Info (Read Me!)
+                            New User Info (Read Me!)
                             <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-down"></em></span></div>
                         <div class="panel-body" style="display:none;">
                             <h4><strong>General:</strong></h4>

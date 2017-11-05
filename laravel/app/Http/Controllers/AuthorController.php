@@ -18,7 +18,7 @@ class AuthorController extends Controller
     public static function index()
     {
         $authors = Author::all();
-        return $authors;
+        return $authors->reverse();
     }
 
     /**l
@@ -81,13 +81,20 @@ class AuthorController extends Controller
         $posts = Post::all();
         
         //Redirect
+        if($author != ""){
         return view('showAuthor')->withAuthor($author)->withTitle($author->author)->withPost($posts);
+        }else{
+            return view('/errors/error404');
+        }
     }
     
     public static function nameFind($name){
         $author = \DB::table('authors')->where('author', $name)->pluck('id');
-        
+        if ($author != "[]"){
         return $author[0];
+        }else{
+            return "error";
+        }
     }
     
     public static function showAll()
@@ -110,7 +117,8 @@ class AuthorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $author = Author::find($id);
+        return view("lumino/userEdit")->withAuthor($author);
     }
 
     /**
@@ -122,7 +130,28 @@ class AuthorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,array(
+                'author'=> 'required|max:255',
+                'bio'=>'required',
+                'year'=>'required|max:225',
+            ));
+        
+        $author = Author::find($id);
+        
+        $author->author = $request->author;
+        $author->bio = $request->bio;
+        $author->year = $request->year;
+        
+        $author->save();
+        
+        if (isset($request->profilePic)){
+            //Move head image to directory
+            $head = $request->file('profilePic');
+        $fileType = $head->getClientOriginalExtension();
+        $head->move("img/staff/",$author->author.".".$fileType);   
+        }
+        
+        return view("lumino/users");
     }
 
     /**
@@ -133,6 +162,12 @@ class AuthorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Author::find($id);
+        $post->delete();
+
+        return redirect('admin/users')->with([
+        'flash_message' => 'Deleted',
+        'flash_message_important' => false
+  ]);
     }
 }
