@@ -2,15 +2,17 @@
 $authors = \App\Http\Controllers\AuthorController::index();
 ?>
     @extends('layouts.app') @section('content')
-    <div class="container-fluid post-page full">
+    <div style="padding:30px;" class="container-fluid post-page full">
         <div class="row">
             <h2>About</h2>
-            <br/>
         </div>
+                    <br/>
+        <div class="row">
         <p>The Lyon is the official school newspaper for William Lyon Mackenzie C.I.</p>
+        </div>
     </div>
 
-    <div style="margin-top:20px;" class="container-fluid post-page full">
+    <div style="margin-top:20px; padding:20px;" class="container-fluid post-page full">
         <h2>Lyon Staff</h2>
         <div class="row">
             @foreach($authors as $authors) @if($authors->year == "2017/2018")

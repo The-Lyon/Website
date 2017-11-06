@@ -1514,7 +1514,8 @@ p.back-link {
     display: inline-block;
 }
 
-.post-row .btn {
+table .btn {
+    margin-right:10px;
     height: 20px;
     margin-top: 2px;
     line-height: 0px;

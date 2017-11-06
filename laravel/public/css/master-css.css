@@ -673,6 +673,11 @@ All Posts Page (News)
     }
 }
 
+@media only screen and (max-device-width:285px){
+    .playlist .intro-container{
+        height:274px;
+    }
+}
 /*===
 Author Page
 ===*/

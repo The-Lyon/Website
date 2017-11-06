@@ -89,45 +89,36 @@ $items= \App\Http\Controllers\AuthorController::showAll();
                             All Posts
                             <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
                         <div class="panel-body">
-                            <div class="container-fluid">
-                                <div class="post-row row">
-                                    <div class="col-sm-3">
-                                        <p><strong><u>Title</u></strong></p>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <p><strong><u>Author</u></strong></p>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <p><strong><u>Type</u></strong></p>
-                                    </div>
-                                </div>
-                                <hr class="nomargin" />
-                                <br/> @foreach($post as $post)
-                                <div class="post-row row">
-                                    <div class="col-sm-3">
-                                        <p><strong>{{$post->title}}</strong></p>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <p>{{$post->author}}</p>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <p id="intro">
-                                            <?php if($post->sport == 'false'){ echo("News");
+                            <table width="100%">
+                                <tr>
+                                    <th><strong><u>Title</u></strong></th>
+                                    <th><strong><u>Author</u></strong></th>
+                                    <th> <strong><u>Type</u></strong></th>
+                                    <th><strong><u></u></strong></th>
+                                </tr>
+                                @foreach($post as $post)
+                                <tr>
+                                    <td><strong>{{$post->title}}</strong></td>
+
+                                    <td>{{$post->author}}</td>
+
+                                    <td>
+                                    <?php if($post->sport == 'false'){ echo("News");
                                         }elseif($post->sport == 'true'){
                                             echo("Sport");
                                         }elseif($post->sport == 'playlist'){
                                         echo("Playlist");}elseif($post->sport == "article"){echo("Article");}else{echo("undefined");} ?>
-                                        </p>
-                                    </div>
-                                    <div style="text-align:right" class="col-sm-3">
-                                         {{Form::open([ 'method' => 'delete', 'route' => [ 'posts.destroy', $post->id ] ])}}
-                                        <button id="delete" class="post-item btn btn-primary btn-sm"><span class="fa fa-trash-o"></span></button> {{ Form::close() }}
-                                       {{Form::open([ 'method' => 'GET', 'route' => [ 'posts.edit', $post->id ] ])}}<button id="edit" class="post-item btn btn-primary btn-sm"><span class="	fa fa-edit"></span></button></form>
+                                    </td>
+                                    <td>
+                                    {{Form::open([ 'method' => 'delete', 'route' => [ 'posts.destroy', $post->id ] ])}}
+                                    <button style="float:right" id="delete" class="post-item btn btn-primary btn-sm"><span class="fa fa-trash-o"></span></button> 
+                                    {{ Form::close() }} {{Form::open([ 'method' => 'GET', 'route' => [ 'posts.edit', $post->id ] ])}}<button style="float:right" id="edit" class="post-item btn btn-primary btn-sm"><span class="	fa fa-edit"></span></button></form>
                                     {{ Form::close() }}
-                                    </div>
-                                </div>
+                                </td>
+
+                                </tr>
                                 @endforeach
-                            </div>
+                            </table>
                         </div>
                     </div>
                 </div>

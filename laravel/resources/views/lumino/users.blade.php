@@ -89,41 +89,32 @@ $items= \App\Http\Controllers\AuthorController::showAll();
                             All Users
                             <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
                         <div class="panel-body">
-                            <div class="container-fluid">
-                                <div class="post-row row">
-                                    <div class="col-sm-3">
-                                        <p><strong><u>Name</u></strong></p>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <p><strong><u>Position</u></strong></p>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <p><strong><u>Year</u></strong></p>
-                                    </div>
-                                </div>
-                                <hr class="nomargin" />
-                                <br/> @foreach($post as $post)
-                                <div class="post-row row">
-                                    <div class="col-sm-3">
-                                        <p><strong>{{$post->author}}</strong></p>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <p>{{$post->position}}</p>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <p id="intro">
-                                            {{$post->year}}
-                                        </p>
-                                    </div>
-                                    <div style="text-align:right" class="col-sm-3">
-                                        {{Form::open([ 'method' => 'delete', 'route' => [ 'authors.destroy', $post->id ] ])}}
-                                        <button id="delete" class="post-item btn btn-primary btn-sm"><span class="fa fa-trash-o"></span></button> {{ Form::close() }}
-                                        {{Form::open([ 'method' => 'GET', 'route' => [ 'authors.edit', $post->id ] ])}}<button id="edit" class="post-item btn btn-primary btn-sm"><span class="	fa fa-edit"></span></button></form>
+                            <table width="100%">
+                                <tr>
+                                    <th><strong><u>Name</u></strong></th>
+                                    <th><strong><u>Position</u></strong></th>
+                                    <th> <strong><u>Year</u></strong></th>
+                                    <th><strong><u></u></strong></th>
+                                </tr>
+                                @foreach($post as $post)
+                                <tr>
+                                    <td><strong>{{$post->author}}</strong></td>
+
+                                    <td>{{$post->position}}</td>
+
+                                    <td>
+                                    {{$post->year}}
+                                    </td>
+                                    <td>
+                                    {{Form::open([ 'method' => 'delete', 'route' => [ 'authors.destroy', $post->id ] ])}}
+                                    <button style="float:right" id="delete" class="post-item btn btn-primary btn-sm"><span class="fa fa-trash-o"></span></button> 
+                                    {{ Form::close() }} {{Form::open([ 'method' => 'GET', 'route' => [ 'authors.edit', $post->id ] ])}}<button style="float:right" id="edit" class="post-item btn btn-primary btn-sm"><span class="	fa fa-edit"></span></button></form>
                                     {{ Form::close() }}
-                                    </div>
-                                </div>
+                                </td>
+
+                                </tr>
                                 @endforeach
-                            </div>
+                            </table>
                         </div>
                     </div>
                 </div>
