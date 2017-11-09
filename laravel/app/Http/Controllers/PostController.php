@@ -147,12 +147,23 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (isset($request->featured)){
+            $post = Post::find($id);
+            if($post->featured == "true"){
+            $post->featured = "false";
+            }else{
+                $post->featured = "true";
+            }
+            $post->save();
+        }else{
+        
         $this->validate($request,array(
                 'title'=> 'required|max:255',
                 'body'=>'required',
                 'intro'=>'required|max:225',
                 'author'=>'required'
-            ));
+        ));
+        
         
         $post = Post::find($id);
         
@@ -177,7 +188,7 @@ class PostController extends Controller
             $fileType = $head->getClientOriginalExtension();
             $head->move("img/posts/".$id, "head".".".$fileType);   
         }
-
+        }
         return view("lumino/posts");
     }
 

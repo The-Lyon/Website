@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<?php
+$var = file_get_contents('nouns.txt'); 
+$result = explode(',',$var); 
+$noun = $result[array_rand($result)];
+?>
 <html>
 
 <head>
@@ -9,7 +14,8 @@
     <style>
         html,
         body {
-            height: 100%;
+            height:400vh;
+            overflow: hidden;
         }
 
         body {
@@ -24,11 +30,12 @@
 
         .container {
             text-align: center;
-            display: table-cell;
+            display: block;
             vertical-align: middle;
         }
 
         .content {
+            margin-top: 30vh;
             text-align: center;
             display: inline-block;
         }
@@ -38,10 +45,10 @@
             font-weight: 200;
             margin-bottom: 40px;
         }
-        
-        p{
-            font-size:25px;
-            font-weight:200;
+
+        p {
+            font-size: 25px;
+            font-weight: 200;
         }
 
         .btn {
@@ -62,6 +69,30 @@
             box-shadow: 0px 0px 14px rgba(0, 0, 0, .3);
         }
 
+        .ooomb {
+            text-align: center;
+            width: 100vw;
+            position: absolute;
+            top: 100vh;
+        }
+        
+        .slide {
+            width: 100%;
+            max-width: 300px;
+        }
+        
+        .row {
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+        
+        @media only screen and (max-device-width: 720px) {
+            .slide {
+                max-width: 90%;
+            }
+        }
+
+
     </style>
 </head>
 
@@ -75,6 +106,48 @@
                 <br/>
                 <button class="btn">Back to The Lyon</button>
                 </a>
+        </div>
+    </div>
+    <div class="ooomb">
+        <br/>
+        <h2>Good Job. You found the secret section!</h2>
+        <button style="width:100%">Scroll Anchor</button>
+        <div class="container">
+            <div style="text-align: center;" class="row">
+                <div class="col-lg-10 col-lg-offset-1 col-sm-12">
+                    <img src="img/Slides/slide-1.jpg" class="slide">
+                    <p style="margin-top:20px; margin-bottom:20px;">"Would you like some
+                        <?php echo($noun); ?> hurty juice?"</p>
+                </div>
+            </div>
+            <button style="width:100%">Scroll Anchor</button>
+            <div style="text-align: center;" class="row">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <img src="img/Slides/slide-2.jpg" class="slide">
+                    <p style="margin-top:20px; margin-bottom:20px;">"Ok."</p>
+                </div>
+            </div>
+            <button style="width:100%">Scroll Anchor</button>
+            <div style="text-align: center;" class="row">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <img src="img/Slides/slide-3.jpg" class="slide">
+                    <p style="margin-top:20px; margin-bottom:20px;">*gulp*</p>
+                </div>
+            </div>
+            <button style="width:100%">Scroll Anchor</button>
+            <div style="text-align: center;" class="row">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <img src="img/Slides/slide-2.jpg" class="slide">
+                    <p style="margin-top:20px; margin-bottom:20px;">"Oof ouch owie my
+                        <?php echo($noun);?>."</p>
+                </div>
+            </div>
+            <div style="text-align: center;" class="row">
+                <button onClick="window.location.reload();">Another One.</button>
+                <a href="/">
+                    <p>Back to The Lyon</p>
+                </a>
+            </div>
         </div>
     </div>
 </body>

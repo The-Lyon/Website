@@ -3,8 +3,8 @@ $(document).ready(function () {
         var scrollTop = $(this).scrollTop();
         if (scrollTop > 20) {
             $('.nav-item').animate({
-                'margin-top': '0',
-                'margin-bottom': '0'
+                'padding-top': '7',
+                'padding-bottom': '7'
             }, 0);
             $('#mac-logo').animate({
                 height: '45'
@@ -14,8 +14,8 @@ $(document).ready(function () {
             }, 0)
         } else {
             $('.nav-item').animate({
-                'margin-top': '20',
-                'margin-bottom': '20'
+                'padding-top': '24',
+                'padding-bottom': '24'
             }, 0);
             $('#mac-logo').animate({
                 height: '60'

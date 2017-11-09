@@ -103,18 +103,27 @@ $items= \App\Http\Controllers\AuthorController::showAll();
                                     <td>{{$post->author}}</td>
 
                                     <td>
-                                    <?php if($post->sport == 'false'){ echo("News");
+                                        <?php if($post->sport == 'false'){ echo("News");
                                         }elseif($post->sport == 'true'){
                                             echo("Sport");
                                         }elseif($post->sport == 'playlist'){
                                         echo("Playlist");}elseif($post->sport == "article"){echo("Article");}else{echo("undefined");} ?>
                                     </td>
                                     <td>
-                                    {{Form::open([ 'method' => 'delete', 'route' => [ 'posts.destroy', $post->id ] ])}}
-                                    <button style="float:right" id="delete" class="post-item btn btn-primary btn-sm"><span class="fa fa-trash-o"></span></button> 
-                                    {{ Form::close() }} {{Form::open([ 'method' => 'GET', 'route' => [ 'posts.edit', $post->id ] ])}}<button style="float:right" id="edit" class="post-item btn btn-primary btn-sm"><span class="	fa fa-edit"></span></button></form>
-                                    {{ Form::close() }}
-                                </td>
+                                        {{Form::open([ 'method' => 'delete', 'route' => [ 'posts.destroy', $post->id ] ])}}
+                                        <button style="float:right" id="delete" class="post-item btn btn-primary btn-sm"><span class="fa fa-trash-o"></span></button> {{ Form::close() }} {{Form::open([ 'method' => 'GET', 'route' => [ 'posts.edit', $post->id ] ])}}<button style="float:right" id="edit" class="post-item btn btn-primary btn-sm"><span class="	fa fa-edit"></span></button></form>
+                                        {{ Form::close() }} {{ Form::close() }} {{Form::open([ 'method' => 'PUT', 'route' => [ 'posts.update', $post->id ] ])}}
+                                        <input type="text" name="featured" style="display:none" value="true">
+                                        <?php
+                                if ($post->featured == "true"){
+                                    echo('<button style="float:right" id="edit" class="post-item btn btn-primary btn-sm"><span class="fa fa-star"></span></button>');
+                                }else{
+                                    echo('<button style="float:right" id="edit" class="post-item btn btn-primary btn-sm"><span class="fa fa-star-o"></span></button>');
+                                }
+                                ?>
+                                            </form>
+                                            {{ Form::close() }}
+                                    </td>
 
                                 </tr>
                                 @endforeach

@@ -38,25 +38,25 @@ if(!isset($title)){
         ]); ?>
 
     </script>
-    
+
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="57x57" href="{{asset('img/fav/apple-icon-57x57.png')}}">
-<link rel="apple-touch-icon" sizes="60x60" href="{{asset('img/fav/apple-icon-60x60.png')}}">
-<link rel="apple-touch-icon" sizes="72x72" href="{{asset('img/fav/apple-icon-72x72.png')}}">
-<link rel="apple-touch-icon" sizes="76x76" href="{{asset('img/fav/apple-icon-76x76.png')}}">
-<link rel="apple-touch-icon" sizes="114x114" href="{{asset('img/fav/apple-icon-114x114.png')}}">
-<link rel="apple-touch-icon" sizes="120x120" href="{{asset('img/fav/apple-icon-120x120.png')}}">
-<link rel="apple-touch-icon" sizes="144x144" href="{{asset('img/fav/apple-icon-144x144.png')}}">
-<link rel="apple-touch-icon" sizes="152x152" href="{{asset('img/fav/apple-icon-152x152.png')}}">
-<link rel="apple-touch-icon" sizes="180x180" href="{{asset('img/fav/apple-icon-180x180.png')}}">
-<link rel="icon" type="image/png" sizes="192x192"  href="{{asset('img/fav/android-icon-192x192.png')}}">
-<link rel="icon" type="image/png" sizes="32x32" href="{{asset('img/fav/favicon-32x32.png')}}">
-<link rel="icon" type="image/png" sizes="96x96" href="{{asset('img/fav/favicon-96x96.png')}}">
-<link rel="icon" type="image/png" sizes="16x16" href="{{asset('img/fav/favicon-16x16.png')}}">
-<link rel="manifest" href="{{asset('img/fav/manifest.json')}}">
-<meta name="msapplication-TileColor" content="#ffffff">
-<meta name="msapplication-TileImage" content="{{asset('img/fav/ms-icon-144x144.png')}}">
-<meta name="theme-color" content="#4286f4">
+    <link rel="apple-touch-icon" sizes="60x60" href="{{asset('img/fav/apple-icon-60x60.png')}}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{asset('img/fav/apple-icon-72x72.png')}}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{asset('img/fav/apple-icon-76x76.png')}}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{asset('img/fav/apple-icon-114x114.png')}}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{asset('img/fav/apple-icon-120x120.png')}}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{{asset('img/fav/apple-icon-144x144.png')}}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{asset('img/fav/apple-icon-152x152.png')}}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{asset('img/fav/apple-icon-180x180.png')}}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{asset('img/fav/android-icon-192x192.png')}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{asset('img/fav/favicon-32x32.png')}}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{asset('img/fav/favicon-96x96.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('img/fav/favicon-16x16.png')}}">
+    <link rel="manifest" href="{{asset('img/fav/manifest.json')}}">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="{{asset('img/fav/ms-icon-144x144.png')}}">
+    <meta name="theme-color" content="#4286f4">
 </head>
 
 <body>
@@ -76,8 +76,11 @@ if(!isset($title)){
                             <a class="dropdown-item" href="/contact">Contact</a>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/news">News</a>
+                </ul>
+                <a class="navbar-brand" href="/"><img id="mac-logo" height="60px;" src="{{ asset('img/100px-Wlmac_logo.png') }}"> </a>
+                <ul class="nav">
+                    <li class="nav-item .hvr-sweep-to-top">
+                        <a class="nav-link" href="/news">News</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/sports">Sports</a>
@@ -85,17 +88,11 @@ if(!isset($title)){
                     <li class="nav-item">
                         <a class="nav-link" href="/articles">Articles</a>
                     </li>
-                </ul>
-                <a class="navbar-brand" href="/"><img id="mac-logo" height="60px;" src="{{ asset('img/100px-Wlmac_logo.png') }}"> </a>
-                <ul class="nav">
                     <li class="nav-item">
                         <a class="nav-link" href="/playlists">Playlist</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/contact">Contact</a>
                     </li>
                     <li id="mobile-menu" class="nav-item dropdown disabled mobile-menu2">
                         <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bars" aria-hidden="true"></i></a>

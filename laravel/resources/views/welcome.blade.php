@@ -1,8 +1,8 @@
 @extends('layouts.app') @section('content')
 <?php
-$recent = \App\Http\Controllers\PostController::recent();
-$post_link = "posts/".$recent->id;
+$post= \App\Http\Controllers\PostController::index();
 ?>
+    <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
     <div class="info-section">
         <!-- Calendar Version 
         <div class="inner-section">
@@ -21,38 +21,101 @@ $post_link = "posts/".$recent->id;
         <h1>The Lyon</h1>
         <h3>Read | Rant | Roar</h3>
     </div>
-    <div class="featured">
-        <h2 id="featured-title">Featured Article</h2>
-        <hr/>
+    <div class="nextBtns">
+        <button id="nextLeft" style="left:20px;" class="btn nextButton"><span class="fa fa-angle-left"></span></button>
+        <button id="nextRight" style="right:20px;" class="btn nextButton"><span class="fa fa-angle-right"></span></button>
+
+    </div>
+    <div class="featured-scroll">
         <!-- Featured Article -->
-        <div class="container-fluid post post-hover">
-            <div class="row">
-                <div id="picture" class="col-lg-6 col-sm-12">
-                    <h1>{{ $recent->title }}</h1>
-                    <img id="post-img" src="{{'/img/posts/'.$recent->id.'/head.jpg'}}">
-                </div>
-                <div id="info" style="background-color:white;" class=" col-lg-6  col-sm-12">
-                    <div id="profile-row" class="container-fluid">
-                        <img src="{{'img/staff/'.$recent->author.'.jpg'}}" id="profile">
-                        <a href="{{'/authors/'.\App\Http\Controllers\AuthorController::nameFind($recent->author)}}">
-                            <h3>{{ $recent -> author}}</h3>
+        <div class="featured-container" class=" row ">
+            <?php $counter = 1?> @foreach($post as $post) @if($post->featured == "true")
+            <div id="featured{{$counter}}" class="post-featured col-5 col-sm-4 col-md-4 col-lg-4">
+                <span>Featured</span>
+                <h1>{{$post->title}}</h1>
+                <img src="{{asset( 'img/posts/'.$post->id.'/head.jpg')}}">
+                <div class="featured-author">
+                    <div class="name-container">
+                        <a href="{{'/authors/'.\App\Http\Controllers\AuthorController::nameFind($post->author)}}">
+                            <h2>{{$post->author}}</h2>
                         </a>
                     </div>
-                    <div class="intro-container">
-                        <?php echo($recent -> intro);?>
-                    </div>
-                    <a href={{$post_link}}>
-                    <button class="btn">Read Article</button>
-                </a>
+                    <img src="{{asset('img/staff/'.$post->author.'.jpg')}}">
                 </div>
+                <div class="intro">
+                    <?php echo($post->intro); ?>
+                </div>
+                <a href="/posts/{{$post->id}}">
+                <button class="readMore btn" class="btn">Read More</button>
+                </a>
             </div>
+            <?php $counter = $counter +1 ?> @endif @endforeach
         </div>
     </div>
-    <div class="container">
-        <div id="more-articles" style="text-align:center;" class="col-sm-12">
-            <a href="/news">
-        <button style="width:175px; height:60px;" class="btn">More Articles</button>
+    <script>
+        $(document).ready(function() {
+            var currentFeature = 1;
+            var featured = $('.post-featured').length
+
+            $(".nextButton").click(function() {
+                if ($(this).css('right') == "20px") {
+                    if (currentFeature < $('.post-featured').length) {
+                        currentFeature = currentFeature + 1;
+                        console.log($(".post-featured").length);
+                        console.log(currentFeature);
+                        if (currentFeature == $('.post-featured').length) {
+                            $(".featured-scroll").animate({
+                                scrollLeft: $("#featured" + currentFeature).offset().left + 500
+
+                            });
+                        } else {
+                            $(".featured-scroll").animate({
+                                scrollLeft: $("#featured" + currentFeature).offset().left - 20
+                            });
+                        }
+                    }
+                } else {
+                    console.log("clicked");
+                    if (currentFeature > 1) {
+                        if (currentFeature == $(".post-featured").length) {
+                            $(".featured-scroll").animate({
+                                scrollLeft: $("#featured" + $('.post-featured').length).offset().left * 5
+                            });
+                            if (currentFeature == 2 && $(".post-featured").length == 2) {
+                                $(".featured-scroll").animate({
+                                    scrollLeft: -500000000
+                                });
+                            }
+                            currentFeature = $(".post-featured").length - 1;
+                        } else {
+                            currentFeature = currentFeature - 1;
+                            $(".featured-scroll").animate({
+                                scrollLeft: $("#featured" + currentFeature).offset().left + 20
+                            });
+                        }
+                        if (currentFeature == 2 && $(".post-featured").length == 2) {
+                            currentFeature = currentFeature - 1;
+                            $(".featured-scroll").animate({
+                                scrollLeft: -500000000
+                            });
+                        }
+                    }
+                }
+                console.log(currentFeature);
+            });
+        });
+
+    </script>
+    <div class="more-articles" class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12 col-md-7">
+                <h3>Like what you see? (or smthn catchy like that)</h3>
+            </div>
+            <div class="col-sm-12 col-md-5">
+                <a href="/news">
+        <button style="width:175px; height:60px; " class="btn">More Articles</button>
         </a>
+            </div>
         </div>
     </div>
 
