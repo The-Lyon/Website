@@ -30,7 +30,7 @@ $post= \App\Http\Controllers\PostController::index();
         <!-- Featured Article -->
         <div class="featured-container" class=" row ">
             <?php $counter = 1?> @foreach($post as $post) @if($post->featured == "true")
-            <div id="featured{{$counter}}" class="post-featured col-5 col-sm-4 col-md-4 col-lg-4">
+            <div id="featured{{$counter}}" class="post-featured col-4 col-sm-4 col-md-4 col-lg-4">
                 <span>Featured</span>
                 <h1>{{$post->title}}</h1>
                 <img src="{{asset( 'img/posts/'.$post->id.'/head.jpg')}}">
@@ -52,6 +52,7 @@ $post= \App\Http\Controllers\PostController::index();
             <?php $counter = $counter +1 ?> @endif @endforeach
         </div>
     </div>
+    <!-- Im too lazy to open the JS file. Maybe one day this will find it's way into that file. -->
     <script>
         $(document).ready(function() {
             var currentFeature = 1;
@@ -108,10 +109,10 @@ $post= \App\Http\Controllers\PostController::index();
     </script>
     <div class="more-articles" class="container-fluid">
         <div class="row">
-            <div class="col-sm-12 col-md-7">
+            <div id="baitText" class="col-sm-12 col-md-7">
                 <h3>Like what you see? (or smthn catchy like that)</h3>
             </div>
-            <div class="col-sm-12 col-md-5">
+            <div id="baitBtn" class="col-sm-12 col-md-5">
                 <a href="/news">
         <button style="width:175px; height:60px; " class="btn">More Articles</button>
         </a>

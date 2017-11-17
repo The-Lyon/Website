@@ -47,6 +47,7 @@ html {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, .2);
     background-color: white;
     padding: 0px;
+    padding-right: 15px;
 }
 
 .nav-item {
@@ -54,13 +55,19 @@ html {
     font-size: 20px;
     transition-duration: .3s;
     z-index: 50000;
-    padding: 20px;
+    padding: 12px;
     padding-top: 24px;
     padding-bottom: 24px;
 }
 
+.nav-item a:hover {
+    color: #276bf7;
+    transition-duration: .3s;
+}
+
 .nav-item a {
     color: black;
+    transition-duration: .3s;
 }
 
 #mac-logo {
@@ -325,6 +332,7 @@ MAIN PAGE
 }
 
 .post-featured {
+    border: none;
     margin: 10px;
     max-width: 31.5%!important;
     position: relative;
@@ -336,7 +344,12 @@ MAIN PAGE
     transition-duration: .2s;
     border-radius: 4px;
     background-color: white;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, .6);
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, .6);
+}
+
+.post-featured:hover {
+    -webkit-transform: scale(1.01, 1.01);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, .5);
 }
 
 .post-featured .intro {
@@ -437,11 +450,57 @@ MAIN PAGE
     }
 
     .featured-container {
-        width: 250vw;
+        width: 225vw;
+        height: 480px;
+    }
+
+    .featured-scroll {
+        height: 480px;
     }
 
     .post-featured {
         max-width: 30%!important;
+        height: 420px;
+    }
+
+    .post-featured img {
+        height: 160px;
+    }
+    .name-container h2 {
+        font-size: 18px;
+        top: 12px;
+    }
+    .featured-author img {
+        height: 45px!important;
+        width: 45px;
+    }
+
+    .post-featured h1 {
+        top: 5px;
+        font-size: 20px!important;
+    }
+    .post-featured span {
+        height: 30px;
+        font-size: 17px!important;
+        line-height: 17px;
+    }
+
+    .post-featured .intro {
+        height: 130px;
+        line-height: 130px;
+    }
+    .intro p {
+        font-size: 14px;
+    }
+
+    .more-articles {
+        height: 260px;
+    }
+
+    #baitText * {
+        font-size: 21px;
+        line-height: 24px;
+        padding-bottom: 25px;
     }
 }
 
@@ -748,6 +807,7 @@ All Posts Page (News)
 ===*/
 
 .post-tab {
+    -webkit-transform: scale(1.0, 1.0);
     box-shadow: 0px 0px 10px rgba(0, 0, 0, .3);
     height: 425px;
     border-radius: 5px;
@@ -758,6 +818,7 @@ All Posts Page (News)
 }
 
 .post-tab:hover {
+    -webkit-transform: scale(1.01, 1.01);
     box-shadow: 0px 0px 18px rgba(0, 0, 0, .3);
     transition-duration: .2s;
 }
@@ -771,7 +832,8 @@ All Posts Page (News)
 
 .post-tab h1 {
     top: 40px;
-    width: 80%;
+    position: absolute;
+    width: 87%;
     overflow: hidden;
     max-height: 110px;
     font-size: 22px;
