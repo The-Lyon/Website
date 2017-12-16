@@ -53,6 +53,17 @@ Laravel will not work on your computer if you just download the repo. You must h
 
 If any web dev ever runs the site locally on a mac, please document the steps here. I would assume that the process is pretty similar to the Windows one but who knows.
 
+## Deployment
+
+The repo (currently) consists of 2 branches, development and production. The dev branch is for anything which is currently being developed (no duh). The production branch is live. The production branch has a pipline with Heroku, and therefore any changes go live immediately. 
+
+When deploying remember:
+
+```
+1. The .env files must stay in their respective branches (dev is different from production)
+2. Double check everything.
+```
+
 ## Styles
 
 - You MUST use curly brackets like this:
