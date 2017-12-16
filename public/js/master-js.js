@@ -1,7 +1,7 @@
 $(document).ready(function () {
     $(window).on('scroll', function () {
         var scrollTop = $(this).scrollTop();
-        if (scrollTop > 20) {
+        if (scrollTop > 30) {
             $('.nav-item').animate({
                 'padding-top': '7',
                 'padding-bottom': '7'
@@ -9,9 +9,9 @@ $(document).ready(function () {
             $('#mac-logo').animate({
                 height: '45'
             }, 0);
-            $('.dropdown-menu').animate({
-                'margin-top': '11'
-            }, 0)
+            $('#mobile-nav').animate({
+                'top': '58'
+            }, 0);
         } else {
             $('.nav-item').animate({
                 'padding-top': '24',
@@ -20,9 +20,18 @@ $(document).ready(function () {
             $('#mac-logo').animate({
                 height: '60'
             }, 0);
-            $('.dropdown-menu').animate({
-                'margin-top': '27'
-            }, 0)
+            $('#mobile-nav').animate({
+                'top': '92'
+            }, 0);
         }
+    });
+
+
+    $(".nav-item").hover(function () {
+        //$(this).css("background-color", "#f4df42");
+        //$(this).children().css("color", "white");
+    }, function () {
+        // $(this).css("background-color", "white");
+        //$(this).children().css("color", "black");
     });
 });

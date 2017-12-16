@@ -1541,3 +1541,8 @@ table .btn {
     margin-left: 10px;
     margin-top: 10px;
 }
+
+td {
+    width: 30%;
+    overflow-x: auto;
+}
