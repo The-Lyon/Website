@@ -30,7 +30,11 @@ if(!isset($title)){
     <link rel="stylesheet" href="https://use.fontawesome.com/26a7a33067.css">
     <!-- Custom Stuff -->
     <link href="{{ asset('css/master-css.css') }}" rel="stylesheet" type="text/css">
-    <script src="{{ asset('js/master-js.js') }} "></script>
+    <link href="{{asset('css/pace-theme.css')}}" rel="stylesheet" type="text/css">
+    <script src="{{ asset('js/master-js.js') }} ">
+
+
+    </script>
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
@@ -65,8 +69,8 @@ if(!isset($title)){
             <div class="navbar fixed-top">
                 <ul class="nav">
                     <li id="mobile-menu" class="nav-item dropdown">
-                        <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bars" aria-hidden="true"></i></a>
-                        <div class="dropdown-menu">
+                        <a class="nav-link" id="mobileBtn" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown"><i class="fa fa-bars" aria-hidden="true"></i></a>
+                        <div class="dropdown-menu" id="mobile-nav">
                             <a class="dropdown-item" href="/news">News</a>
                             <a class="dropdown-item" href="/sports">Sports</a>
                             <a class="dropdown-item" href="/articles">Articles</a>
@@ -77,8 +81,8 @@ if(!isset($title)){
                         </div>
                     </li>
                 </ul>
-                <a class="navbar-brand" href="/"><img id="mac-logo" height="60px;" src="{{ asset('img/100px-Wlmac_logo.png') }}"> </a>
-                <ul class="nav">
+                <a style="z-index:10" class="navbar-brand" href="/"><img id="mac-logo" height="60px;" src="{{ asset('img/100px-Wlmac_logo.png') }}"> </a>
+                <ul style="z-index:10" class="nav">
                     <li class="nav-item .hvr-sweep-to-top">
                         <a class="nav-link" href="/news">News</a>
                     </li>
@@ -147,6 +151,7 @@ if(!isset($title)){
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
+    <script src="/js/pace.js"></script>
 </body>
 
 </html>

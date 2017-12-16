@@ -1,4 +1,13 @@
 @extends('layouts.app') @section('content')
+
+<div class="container-fluid post top-title post-full">
+
+    <div class="row">
+        <div class="col-sm-12 col-md-6">
+            <h2 id="page-title" style="margin-bottom:0px;padding:10px;">About</h2>
+        </div>
+    </div>
+</div>
 <div class="container-fluid post post-full">
     <script>
         window.fbAsyncInit = function() {
@@ -23,27 +32,24 @@
     </script>
 
     <div class="row">
-        <div class="col-sm-12 col-md-6">
-            <h2 id="page-title" style="margin-bottom:20px;padding:10px;">Contact The Lyon</h2>
-        </div>
         <div class="col-sm-12">
-                <?php
+            <?php
             if(isset($sent)){
                 echo('<div class="alert alert-success" role="alert"><span><strong>Message Sent!</strong></span></div>');
             }
             ?>
-            {{Form::open([ 'method' => 'POST', 'route' => 'posts.store' ])}}
-            <div class="contact">
-                <p>Send us an email:</p>
-                <hr class="nomargin" />
-                <input name="name" class="form-control" placeholder="Name" type="text">
-                <input name="email" class="form-control" placeholder="Email" type="email">
-                <textarea name="message" class="form-control" placeholder="Message"></textarea>
-                <input type="submit" class="btn" value="Send">
-            </div>
-            {{Form::close()}}
-            <br/>
-            <br/>
+                {{Form::open([ 'method' => 'POST', 'route' => 'posts.store' ])}}
+                <div class="contact">
+                    <p>Send us an email:</p>
+                    <hr class="nomargin" />
+                    <input name="name" class="form-control" placeholder="Name" type="text">
+                    <input name="email" class="form-control" placeholder="Email" type="email">
+                    <textarea name="message" class="form-control" placeholder="Message"></textarea>
+                    <input type="submit" class="btn" value="Send">
+                </div>
+                {{Form::close()}}
+                <br/>
+                <br/>
         </div>
     </div>
 </div>

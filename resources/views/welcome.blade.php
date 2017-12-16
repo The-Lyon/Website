@@ -110,7 +110,7 @@ $post= \App\Http\Controllers\PostController::index();
     <div class="more-articles" class="container-fluid">
         <div class="row">
             <div id="baitText" class="col-sm-12 col-md-7">
-                <h3>Like what you see? (or smthn catchy like that)</h3>
+                <h3>This is just the tip of the iceberg.</h3>
             </div>
             <div id="baitBtn" class="col-sm-12 col-md-5">
                 <a href="/news">
@@ -120,4 +120,11 @@ $post= \App\Http\Controllers\PostController::index();
         </div>
     </div>
 
-    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet"> @endsection
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+    <style>
+        #app {
+            padding-top: 0px;
+        }
+
+    </style>
+    @endsection

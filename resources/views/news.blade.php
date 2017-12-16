@@ -2,11 +2,11 @@
 <?php
 $post= \App\Http\Controllers\PostController::index();
 ?>
-    <div class="container-fluid post post-full">
+    <div class="container-fluid post top-title post-full">
 
         <div class="row">
             <div class="col-sm-12 col-md-6">
-                <h2 id="page-title" style="margin-bottom:20px;padding:10px;">News</h2>
+                <h2 id="page-title" style="margin-bottom:20px;padding:10px;padding-left:20px;">News</h2>
             </div>
             <div class="col-sm-12 col-md-6">
                 <form action="/search" metho="POST" id="search">
@@ -17,6 +17,8 @@ $post= \App\Http\Controllers\PostController::index();
                 </form>
             </div>
         </div>
+    </div>
+    <div class="container-fluid post post-full" style="background-color:#fcfcfc;">
         <div class="container-fluid">
             <div style="text-align:center;" class="row">
                 @if(isset($message))
