@@ -61,6 +61,10 @@ something{
   (your code)
 }
 ```
+(Otherwise you are insane)
+
 - Use tabs, not spaces.
 
+## Publishing
 
+Once code is pushed to the Production branch Heroku will automatically update from the commit.
