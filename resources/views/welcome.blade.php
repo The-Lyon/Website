@@ -3,8 +3,9 @@
 $post= \App\Http\Controllers\PostController::index();
 ?>
     <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
+    <!--
     <div class="info-section">
-        <!-- Calendar Version 
+         Calendar Version 
         <div class="inner-section">
             <div class="day">
                 <h1>Today is a:</h1>
@@ -18,19 +19,21 @@ $post= \App\Http\Controllers\PostController::index();
 !-->
 
         <!-- Just Title -->
+        <!--
         <h1>The Lyon</h1>
         <h3>Read | Rant | Roar</h3>
     </div>
+-->
+<!--
     <div class="nextBtns">
         <button id="nextLeft" style="left:20px;" class="btn nextButton"><span class="fa fa-angle-left"></span></button>
         <button id="nextRight" style="right:20px;" class="btn nextButton"><span class="fa fa-angle-right"></span></button>
 
     </div>
-    <div class="featured-scroll">
+-->
         <!-- Featured Article -->
-        <div class="featured-container" class=" row ">
             <?php $counter = 1?> @foreach($post as $post) @if($post->featured == "true")
-            <div id="featured{{$counter}}" class="post-featured col-4 col-sm-4 col-md-4 col-lg-4">
+            <div id="featured{{$counter}}" class="post-featured">
                 <span>Featured</span>
                 <h1>{{$post->title}}</h1>
                 <img src="{{asset( 'img/posts/'.$post->id.'/head.jpg')}}">
@@ -50,9 +53,8 @@ $post= \App\Http\Controllers\PostController::index();
                 </a>
             </div>
             <?php $counter = $counter +1 ?> @endif @endforeach
-        </div>
-    </div>
     <!-- Im too lazy to open the JS file. Maybe one day this will find it's way into that file. -->
+    <!--
     <script>
         $(document).ready(function() {
             var currentFeature = 1;
@@ -107,6 +109,7 @@ $post= \App\Http\Controllers\PostController::index();
         });
 
     </script>
+    -->
     <div class="more-articles" class="container-fluid">
         <div class="row">
             <div id="baitText" class="col-sm-12 col-md-7">

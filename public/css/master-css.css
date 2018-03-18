@@ -6,10 +6,14 @@ The Lyon Master CSS
 
 /* General Stuff */
 
-body {
+h2,h4,h3{
+    color:white!important;
+}
 
+body {
     font-family: 'Raleway', sans-serif;
     height: auto;
+    background-color:#F0F0F0;
     width: 100vw;
     overflow-x: hidden;
 }
@@ -20,7 +24,7 @@ html {
 
 #app {
     min-height: 100vh;
-    padding-top: 94px;
+    background-color:#F0F0F0;   
 }
 
 .btn {
@@ -45,52 +49,86 @@ html {
 
 .navbar {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, .2);
-    background-color: white;
-    padding: 0px;
-    padding-right: 15px;
+    background-color: #276bf7;
+    position:fixed;
+    height:100vh;
+    width: 7vw;
+    left:0px;
+    padding: 0px!important;
     z-index: 1000;
 }
 
-.nav-item {
-    font-weight: 500;
-    font-size: 20px;
-    transition-duration: .3s;
-    z-index: 50000;
-    padding: 12px;
-    padding-top: 24px;
-    padding-bottom: 24px;
-}
-
-.nav-item a:hover {
-    color: black;
-    transition-duration: .3s;
-}
-
-.nav-item a {
-    color: black;
-    transition-duration: .3s;
-}
-
-#mac-logo {
-    transition-duration: .3s;
-}
-
-.nav-item:focus {
-    outline: none;
-}
-
 .navbar-brand {
-    position: fixed;
-    left: 30px;
-    transition-duration: .1s;
+    text-align: center;
+    padding:0px;
+    height:7vw;
+    position: absolute;
+    color:rgb(253, 227, 148);
+    line-height: 7vw;
+    white-space: nowrap;
+    top:20px;
+    font-size:22px;
+    transform: rotate(-90deg); 
     margin: 0px;
 }
 
 .navbar-brand:hover {
     transition-duration: .1s;
     transform: scale(.95, .95);
+    transform: rotate(-90deg);
+    color: #F2C94C;
 }
 
+.openMenu{
+    color:white;
+    font-size:35px;
+    width:7vw;
+    line-height:7vh;
+    text-align:center;
+    position:fixed;
+    bottom:0px;
+    height:7vw;
+}
+
+.fa-compass{
+    z-index:15;
+    transition-duration:.2s;
+}
+
+.fa-compass:hover{
+    transform: scale(1.1,1.1);
+}
+
+.submenu{
+    overflow-y: auto;
+    z-index:11;
+    position:fixed;
+    top:0px;
+    overflow:hidden;
+    padding:10px;
+    left:7vw;
+    width:33vw;
+    height:100vh;
+    background-color:#2664e0;
+    display:none;
+}
+
+.tile .icon{
+    width:100%;
+    padding:10px;
+    font-size:45px!important;
+    text-align:center;
+}
+
+.is-parent a{
+    transition-duration:.2s;
+}
+
+.is-parent a:hover{
+    text-decoration: none;
+    transition-duration:.2s;
+    transform: scale(.98,.98);
+}
 
 /* Mobile Menu */
 
@@ -159,6 +197,15 @@ html {
 /*---
 MAIN PAGE
 ---*/
+
+/* All Content */
+.content{
+    width:93vw;
+    min-height:100vh;
+    position:absolute;
+    background-color:#F0F0F0;
+    left:7vw;
+}
 
 /* Info Section */
 
@@ -240,7 +287,8 @@ MAIN PAGE
 
 .more-articles {
     text-align: center;
-    margin-top: 524px;
+    display:inline-block;
+    position:relative;
     height: 175px;
     width: 100%;
     object-fit: cover;
@@ -351,7 +399,7 @@ MAIN PAGE
 .post-featured {
     border: none;
     margin: 10px;
-    max-width: 31.5%!important;
+    width:88vw;
     position: relative;
     display: inline-block;
     top: 0px;
@@ -359,9 +407,10 @@ MAIN PAGE
     overflow: hidden;
     height: 550px;
     transition-duration: .2s;
-    border-radius: 3px;
+    border-radius: 1px;
     background-color: white;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, .6);
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, .2);
+    margin:2vw;
 }
 
 .top-title {
@@ -383,7 +432,7 @@ MAIN PAGE
 
 .post-featured:hover {
     -webkit-transform: scale(1.01, 1.01);
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, .5);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, .2);
 }
 
 .post-featured .intro {
@@ -681,7 +730,8 @@ MAIN PAGE
 /* Footer */
 
 footer {
-    width: 100%;
+    position:absolute;
+    bottom:-175px;
     color: white;
 }
 

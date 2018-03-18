@@ -34,4 +34,14 @@ $(document).ready(function () {
         // $(this).css("background-color", "white");
         //$(this).children().css("color", "black");
     });
+
+    $(".openMenu").click(function(e){
+        $('.submenu').toggle("slide", 310);
+        e.stopPropagation()
+    });
+
+    $(window).click(function () {
+        $('.submenu').hide("slide", 310);
+    });
+
 });

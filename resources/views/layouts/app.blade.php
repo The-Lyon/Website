@@ -18,8 +18,10 @@ if(!isset($title)){
     <title>{{$title}} | The Lyon</title>
 
     <!-- Styles -->
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js "></script>
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- Bulma.io -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
     <!-- Bootstrap 4 -->
     <link rel="stylesheet " href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css " integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M " crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
@@ -27,7 +29,7 @@ if(!isset($title)){
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet ">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/26a7a33067.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
     <!-- Custom Stuff -->
     <link href="{{ asset('css/master-css.css') }}" rel="stylesheet" type="text/css">
     <link href="{{asset('css/pace-theme.css')}}" rel="stylesheet" type="text/css">
@@ -66,48 +68,50 @@ if(!isset($title)){
 <body>
     <div id="app">
         <nav>
-            <div class="navbar fixed-top">
-                <ul class="nav">
-                    <li id="mobile-menu" class="nav-item dropdown">
-                        <a class="nav-link" id="mobileBtn" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown"><i class="fa fa-bars" aria-hidden="true"></i></a>
-                        <div class="dropdown-menu" id="mobile-nav">
-                            <a class="dropdown-item" href="/news">News</a>
-                            <a class="dropdown-item" href="/sports">Sports</a>
-                            <a class="dropdown-item" href="/articles">Articles</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/playlists">Playlist</a>
-                            <a class="dropdown-item" href="/about">About</a>
-                            <a class="dropdown-item" href="/contact">Contact</a>
-                        </div>
-                    </li>
-                </ul>
-                <a style="z-index:10" class="navbar-brand" href="/"><img id="mac-logo" height="60px;" src="{{ asset('img/100px-Wlmac_logo.png') }}"> </a>
-                <ul style="z-index:10" class="nav">
-                    <li class="nav-item .hvr-sweep-to-top">
-                        <a class="nav-link" href="/news">News</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/sports">Sports</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/articles">Articles</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/playlists">Playlist</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/about">About</a>
-                    </li>
-                    <li id="mobile-menu" class="nav-item dropdown disabled mobile-menu2">
-                        <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bars" aria-hidden="true"></i></a>
-                    </li>
-                </ul>
+            <div class="navbar">
+                <a style="z-index:10" class="navbar-brand" href="/">The Lyon</a>
+                <span class="openMenu"><i class="far fa-compass"></i></span>
+            </div>
+            <div class="submenu">
+            <div style="width:33vw;" class="tile is-ancestor">
+                <div class="tile is-vertical is-12">
+                    <div class="tile">
+                    <div class="tile is-parent is-vertical">
+                        <a href="/articles" class="tile is-child notification is-primary">
+                        <p class="title">Articles</p>
+                        <span class="icon"><i class="fas fa-book"></i></span>
+                        </a>
+                        <a href="/playlists" class="tile is-child notification is-warning">
+                        <p class="title">Playlists</p>
+                        <span class="icon"><i class="fas fa-headphones"></i></span>
+                        </a>
+                    </div>
+                    <div class="tile is-parent">
+                        <a href="/sports" class="tile is-child notification is-info">
+                        <p class="title">Sports</p>
+                        <span class="icon"><i class="fas fa-bowling-ball"></i></span>
+                        </a>
+                    </div>
+                    </div>
+                    <div class="tile is-parent">
+                    <a href="/news" class="tile is-child notification is-danger">
+                        <p class="title">News</p>
+                        <span class="icon"><i class="far fa-newspaper"></i></span>
+                    </a>
+                    </div>
+                    <div class="tile is-parent">
+                    <a href="/about" class="tile is-child notification is-primary">
+                        <p class="title">About</p>
+                        <span class="icon"><i class="far fa-question-circle"></i></span>
+                    </a>
+                    </div>                    
+                </div>
+                </div>
             </div>
         </nav>
-
-        @yield('content')
-    </div>
-    <footer class="container-fluid">
+        <div class="content">
+            @yield('content')
+            <footer class="container-fluid">
         <div class="row" id="footer-light">
             <div class="col-sm-12 col-md-6">
                 <h3>The Lyon</h3>
@@ -148,6 +152,8 @@ if(!isset($title)){
             </div>
         </div>
     </footer>
+        </div>
+    </div>
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
