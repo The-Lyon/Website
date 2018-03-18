@@ -73,7 +73,7 @@ if(!isset($title)){
                 <span class="openMenu"><i class="far fa-compass"></i></span>
             </div>
             <div class="submenu">
-            <div style="width:33vw;" class="tile is-ancestor">
+            <div style="width:100%; margin:0px; padding:0px!important;" class="tile is-ancestor">
                 <div class="tile is-vertical is-12">
                     <div class="tile">
                     <div class="tile is-parent is-vertical">

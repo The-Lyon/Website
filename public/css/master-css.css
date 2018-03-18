@@ -27,6 +27,15 @@ html {
     background-color:#F0F0F0;   
 }
 
+/* All Content */
+.content{
+    width:93vw;
+    min-height:100vh;
+    position:absolute;
+    background-color:#F0F0F0;
+    left:7vw;
+}
+
 .btn {
     border: none;
     outline: none;
@@ -62,21 +71,24 @@ html {
     text-align: center;
     padding:0px;
     height:7vw;
+    width:7vw;
     position: absolute;
     color:rgb(253, 227, 148);
     line-height: 7vw;
     white-space: nowrap;
     top:20px;
-    font-size:22px;
+    font-size:1.25em;
     transform: rotate(-90deg); 
     margin: 0px;
+    transition-duration:.2s;
 }
 
 .navbar-brand:hover {
-    transition-duration: .1s;
-    transform: scale(.95, .95);
+    transition-duration: .2s;
     transform: rotate(-90deg);
     color: #F2C94C;
+    /*background-color:#1b51bd;*/
+    text-shadow: 0px 0px 5px rgba(0,0,0,.1);
 }
 
 .openMenu{
@@ -97,6 +109,7 @@ html {
 
 .fa-compass:hover{
     transform: scale(1.1,1.1);
+    transform: rotate(95deg);
 }
 
 .submenu{
@@ -120,6 +133,49 @@ html {
     text-align:center;
 }
 
+.is-child{
+    padding-right:24px;
+}
+
+@media only screen and (max-device-width: 990px) {
+    .navbar {
+        width: 12vw;
+    }
+
+    .navbar-brand {
+        top:2.3em;
+        font-size:1.15em;
+        line-height:12vw;
+        height:12vw;
+        width:12vw;
+    }
+
+    .openMenu{
+        font-size:25px;
+        width:12vw;
+        line-height:10vh;
+        height:10vh;
+    }
+
+    .submenu{
+        overflow-y: scroll;
+        left:11vw;
+        width:50vw;
+    }
+
+    a .title{
+        width:100%;
+        font-size:20px;
+    }
+
+    /* All Content */
+    .content{
+        width:88vw;
+        left:12vw;
+    }
+
+}
+
 .is-parent a{
     transition-duration:.2s;
 }
@@ -134,24 +190,6 @@ html {
 
 #mobile-menu {
     display: none;
-}
-
-@media only screen and (max-device-width: 990px) {
-    .nav-item {
-        display: none;
-    }
-    #mobile-menu {
-        display: block;
-    }
-    .mobile-menu2 {
-        opacity: 0;
-    }
-
-    .navbar-brand {
-        width: 100%;
-        text-align: center;
-        left: 0px;
-    }
 }
 
 .dropdown-menu {
@@ -197,15 +235,6 @@ html {
 /*---
 MAIN PAGE
 ---*/
-
-/* All Content */
-.content{
-    width:93vw;
-    min-height:100vh;
-    position:absolute;
-    background-color:#F0F0F0;
-    left:7vw;
-}
 
 /* Info Section */
 
@@ -413,6 +442,12 @@ MAIN PAGE
     margin:2vw;
 }
 
+@media only screen and (max-device-width: 990px) {
+    .post-featured {
+        width: 84vw;
+    }
+}
+
 .top-title {
     box-shadow: 0px 3px 10px rgba(0, 0, 0, .2)!important;
     margin-top: 0px!important;
@@ -502,6 +537,7 @@ MAIN PAGE
     font-size: 22px;
     text-align: right;
     top: 10px;
+    color:black!important;
 }
 
 .featured-author img {
@@ -539,11 +575,6 @@ MAIN PAGE
 
     .featured-scroll {
         height: 480px;
-    }
-
-    .post-featured {
-        max-width: 30%!important;
-        height: 420px;
     }
 
     .post-featured img {
