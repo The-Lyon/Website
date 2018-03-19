@@ -43,7 +43,6 @@ $(document).ready(function () {
                     $('.submenu').delay(210).animate({ width: '0px', padding: '0px', opacity: '0', display: 'none' }, 220);
                 }
             });
-            
         } else {
             if ($(document).width() > 990) {
                 $('.submenu').animate({ width: '33vw', padding: '10px', opacity: '1', display: 'block' }, {
@@ -53,14 +52,24 @@ $(document).ready(function () {
                     }
                 });
             } else {
-                $('.submenu').animate({ width: '200px', padding: '10px', opacity: '1', display: 'block' });
+                $('.submenu').animate({ width: '200px', padding: '10px', opacity: '1', display: 'block' }, {
+                    duration: 210,
+                    complete: function () {
+                        $('.is-child').animate({ opacity: '1' }, 170);
+                    }
+                });
             }
         }
         e.stopPropagation()
     });
 
     $(window).click(function () {
-        $('.submenu').hide("slide", 310);
+        $('.is-child').animate({ opacity: '0' }, {
+            duration: 170,
+            complete: function () {
+                $('.submenu').delay(210).animate({ width: '0px', padding: '0px', opacity: '0', display: 'none' }, 220);
+            }
+        });
     });
 
 });
