@@ -35,8 +35,27 @@ $(document).ready(function () {
         //$(this).children().css("color", "black");
     });
 
-    $(".openMenu").click(function(e){
-        $('.submenu').toggle("slide", 310);
+    $(".openMenu").click(function (e) {
+        if ($('.submenu').width() > 0) {
+            $('.is-child').animate({ opacity: '0' }, {
+                duration: 170,
+                complete: function () {
+                    $('.submenu').delay(210).animate({ width: '0px', padding: '0px', opacity: '0', display: 'none' }, 220);
+                }
+            });
+            
+        } else {
+            if ($(document).width() > 990) {
+                $('.submenu').animate({ width: '33vw', padding: '10px', opacity: '1', display: 'block' }, {
+                    duration: 210,
+                    complete: function () {
+                        $('.is-child').animate({ opacity: '1' }, 170);
+                    }
+                });
+            } else {
+                $('.submenu').animate({ width: '200px', padding: '10px', opacity: '1', display: 'block' });
+            }
+        }
         e.stopPropagation()
     });
 
