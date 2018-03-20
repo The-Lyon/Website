@@ -7,7 +7,7 @@ The Lyon Master CSS
 /* General Stuff */
 
 h2,h4,h3{
-    color:white!important;
+    /*color:white!important;*/
 }
 
 body {
@@ -1049,6 +1049,10 @@ All Posts Page (News)
     .post-tab h1 {
         height: 48px;
     }
+}
+
+#page-title{
+    color:white!important;
 }
 
 @media only screen and (max-device-width: 770px) {
