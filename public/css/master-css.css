@@ -6,10 +6,6 @@ The Lyon Master CSS
 
 /* General Stuff */
 
-h2,h4,h3{
-    /*color:white!important;*/
-}
-
 body {
     font-family: 'Raleway', sans-serif;
     height: auto;
@@ -63,6 +59,7 @@ html {
     height:100vh;
     width: 7vw;
     left:0px;
+    top:0px;
     padding: 0px!important;
     z-index: 1000;
 }
@@ -108,8 +105,7 @@ html {
 }
 
 .fa-compass:hover{
-    transform: scale(1.1,1.1);
-    transform: rotate(95deg);
+    transform: rotate(90deg);
 }
 
 .submenu{
@@ -191,7 +187,6 @@ html {
 }
 
 .dropdown-menu {
-    top: 35px;
     left: -24px;
     border: none;
     box-shadow: 0px 10px 10px rgba(0, 0, 0, .2);
@@ -220,6 +215,7 @@ html {
 /* Meta */
 
 #metaDropdown .dropdown-menu {
+    position:absolute;
     width: 200px;
     color: black;
     transition-duration: 0s;
@@ -426,7 +422,7 @@ MAIN PAGE
 .post-featured {
     border: none;
     margin: 10px;
-    width:88vw;
+    width:84vw;
     position: relative;
     display: inline-block;
     top: 0px;
@@ -437,12 +433,14 @@ MAIN PAGE
     border-radius: 1px;
     background-color: white;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, .2);
-    margin:2vw;
+    margin:4vw;
+    margin-top:2vw;
+    margin-bottom:2vw;
 }
 
 @media only screen and (max-device-width: 990px) {
     .post-featured {
-        width: 84vw;
+        width: 80vw;
     }
 }
 
@@ -633,6 +631,7 @@ MAIN PAGE
 }
 
 .post-full {
+    background-color:white;
     max-height: none;
     padding: 20px;
     height: auto;
@@ -806,6 +805,10 @@ footer li {
 }
 
 @media only screen and (max-device-width:770px) {
+    footer{
+        bottom:-260px;
+    }
+
     #footer-light {
         text-align: center;
         height: 200px;
@@ -823,13 +826,16 @@ footer li {
 /* Article Page */
 
 .post-page {
+    min-height:300px;
+    position:relative;
     height: auto;
     background-color:white;
     width: 90%;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, .2);
     margin-top: 15px;
     margin-bottom: 15px;
-    padding: 40px;
+    padding:0px;
+    padding-bottom: 40px;
     max-height: none;
 }
 
@@ -853,10 +859,10 @@ footer li {
 
 .post-page .head-img {
     padding: 0px;
-    min-height: 115px;
-    max-height: 300px;
+    height:450px;
     width: 100%;
-    object-fit: cover;
+    background-size:cover;
+    background-attachment: fixed;
 }
 
 .post-page #profile {
@@ -873,6 +879,18 @@ footer li {
     line-height: 50px;
     margin-right: 60px;
     font-size: 20px;
+}
+
+.post-page .text-container{
+    padding:40px;
+}
+
+.text-container h1{
+    position:relative;
+    font-size:32px;
+    padding:0px;
+    color:#363636!important;
+    background:none;
 }
 
 @media only screen and (max-device-width:770px) {
@@ -921,8 +939,6 @@ New Post Pg
 #intro {
     width: 100%;
 }
-
-.img-upload label {}
 
 /* ===
 All Posts Page (News)
@@ -1038,6 +1054,10 @@ All Posts Page (News)
 }
 
 @media only screen and (max-device-width: 990px) {
+    .post-tab{
+        margin-top:20px;
+    }
+    
     .post-tab button {
         min-width: 70%;
         margin: 0px;
@@ -1088,6 +1108,7 @@ Author Page
 ===*/
 
 .author {
+    background-color:white;
     margin-top: 10px;
     margin-bottom: 10px;
     transition-duration: .2s;

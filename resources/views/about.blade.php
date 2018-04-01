@@ -10,7 +10,7 @@ $authors = \App\Http\Controllers\AuthorController::index();
             </div>
         </div>
     </div>
-    <div style="padding:40px;" class="container-fluid post-page full">
+    <div style="padding:40px; min-height:0px;" class="container-fluid post-page full">
         <div class="row">
             <h2>What is The Lyon?</h2>
         </div>

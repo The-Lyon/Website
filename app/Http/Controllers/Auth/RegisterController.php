@@ -63,7 +63,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        if ($data['code'] == "lyonExEc2017"){
+        if ($data['code'] == "lyonExEc2018"){
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],

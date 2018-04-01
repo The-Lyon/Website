@@ -125,7 +125,7 @@ $items= \App\Http\Controllers\AuthorController::showAll();
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             Edit Post Info (Read Me!)
-                            <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-down"></em></span></div>
+                            <span class="pull-right clickable panel-toggle panel-button-tab-left panel-collapsed"><em class="fa fa-toggle-down"></em></span></div>
                         <div class="panel-body" style="display:none;">
                             <h4><strong>General:</strong></h4>
                             <ul style="line-height:25px;">
@@ -155,11 +155,6 @@ $items= \App\Http\Controllers\AuthorController::showAll();
                             <ul>If something is not working it can most likely be uploaded manually by a web dev.</ul>
                         </div>
                     </div>
-                </div>
-
-
-                <div class="col-sm-12">
-                    <p class="back-link">Lumino Theme by <a href="https://www.medialoot.com">Medialoot</a></p>
                 </div>
             </div>
             <!--/.row-->

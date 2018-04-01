@@ -72,4 +72,24 @@ $(document).ready(function () {
         });
     });
 
+    /*
+    Buggy and not working
+    $(document).scroll(function () {
+        if ($(".submenu").width() > 0) {
+            $('.is-child').animate({ opacity: '0' }, {
+                duration: 170,
+                complete: function () {
+                    $('.submenu').delay(210).animate({ width: '0px', padding: '0px', opacity: '0', display: 'none' }, 220);
+                }
+            });
+        }
+    });
+    */
+
+    $(".fa-compass").hover(function(){
+        $(".fa-compass").rotate(95);
+    }, function(){
+        $(".fa-compass").rotate(-95);
+    });
+
 });
