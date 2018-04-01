@@ -27,6 +27,8 @@ Route::get("/admin/post", ['uses' => 'PagesController@getAdminPost', 'middleware
 
 Route::get("/admin/users", ['uses' => 'PagesController@getAdminUser', 'middleware' => 'auth']);
 
+Route::get("/admin/settings", ['uses' => 'PagesController@getAdminSettings', 'middleware' => 'auth']);
+
 Route::get("/social", "PagesController@getSocial");
 
 Route::get("/articles", "PagesController@getArticles");

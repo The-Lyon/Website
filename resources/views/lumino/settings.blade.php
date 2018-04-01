@@ -1,43 +1,21 @@
 <!DOCTYPE html>
 <?php
-$post= \App\Http\Controllers\AuthorController::index();
+$post= \App\Http\Controllers\PostController::index();
 $items= \App\Http\Controllers\AuthorController::showAll();
-$page = "Users";
+$page = "Settings";
 ?>
 @extends('layouts.auth') @section('content')
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                All Users
+                All Posts
                 <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
             <div class="panel-body">
-                <table width="100%">
-                    <tr>
-                        <th><strong><u>Name</u></strong></th>
-                        <th><strong><u>Position</u></strong></th>
-                        <th> <strong><u>Year</u></strong></th>
-                        <th><strong><u></u></strong></th>
-                    </tr>
-                    @foreach($post as $post)
-                    <tr>
-                        <td><strong>{{$post->author}}</strong></td>
-
-                        <td>{{$post->position}}</td>
-
-                        <td>
-                        {{$post->year}}
-                        </td>
-                        <td>
-                        {{Form::open([ 'method' => 'delete', 'route' => [ 'authors.destroy', $post->id ] ])}}
-                        <button style="float:right" id="delete" class="post-item btn btn-primary btn-sm"><span class="fa fa-trash-o"></span></button> 
-                        {{ Form::close() }} {{Form::open([ 'method' => 'GET', 'route' => [ 'authors.edit', $post->id ] ])}}<button style="float:right" id="edit" class="post-item btn btn-primary btn-sm"><span class="	fa fa-edit"></span></button></form>
-                        {{ Form::close() }}
-                    </td>
-
-                    </tr>
-                    @endforeach
-                </table>
+                <ul>
+                <li>Register password</li>
+                <li>Img of the month</li>
+                </ul>
             </div>
         </div>
     </div>
@@ -45,36 +23,12 @@ $page = "Users";
 <!--/.row-->
 
 <!--row-->
-<div class="row">
-    <div class="col-md-12">
-        <div class="panel panel-default collapsed">
-            <div class="panel-heading">
-                New User
-                <span class="pull-right clickable panel-toggle panel-button-tab-left panel-collapsed"><em class="fa fa-toggle-down"></em></span></div>
-            <div class="panel-body" style="display:none;">
-                {!! Form::open(array('route'=>'authors.store', 'files' => true))!!} {{Form::label('author','Name (Full):')}} {{Form::text('author',null,array('class'=>'form-control'))}}
-                <br/> {{Form::label('year','Year:')}}
-                <select class="form-control" name="year">
-            <?php 
-            for ($x=date("Y")-1;$x<=date("Y")+1;$x++){
-                echo('<option value="'.($x).'/'.($x+1).'">'.($x).'/'.($x+1).'</option>');
-            }
-            ?>
-        </select>
-                <br/> {{Form::label('position','Position:')}} {{Form::text('position',null,array('class'=>'form-control'))}}
-                <br/> {{Form::label('bio','Bio (Max 400 characters):')}} {{Form::textarea('bio',null,array('class'=>'form-control'))}}
-                <br/> {{Form::file('profilePic',array('class'=>'form-control img-upload'))}}
-                <br/> {{Form::submit('Create User', array('class'=>'btn btn-primary'))}} {!! Form::close() !!}
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                New User Info (Read Me!)
+                Settings Info (Read Me!)
                 <span class="pull-right clickable panel-toggle panel-button-tab-left panel-collapsed"><em class="fa fa-toggle-down"></em></span></div>
             <div class="panel-body" style="display:none;">
                 <h4><strong>General:</strong></h4>

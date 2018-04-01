@@ -35,6 +35,10 @@ class PagesController extends Controller{
         return view("/lumino/users");
     }
     
+    public function getAdminSettings(){
+        return view("/lumino/settings");
+    }
+
     public function getArticles(){
         return view("/articles")->withTitle("Articles");
     }
