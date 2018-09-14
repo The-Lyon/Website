@@ -16,7 +16,7 @@ $authors = \App\Http\Controllers\AuthorController::index();
         </div>
         <br/>
         <div class="row">
-            <p>The Lyon is the official school newspaper for William Lyon Mackenzie C.I. Need to know more? Get in touch with us <a href="/contact">here</a>!</p>
+            <p>The Lyon test is the official school newspaper for William Lyon Mackenzie C.I. Need to know more? Get in touch with us <a href="/contact">here</a>!</p>
         </div>
     </div>
 
